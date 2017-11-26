@@ -73,7 +73,7 @@ python main.py --model condensenet -b 20 -j 20 /PATH/TO/IMAGENET \
 --convert-from /PATH/TO/BEST/MODEL
 ```
 
-Finally, to directly load from a converted model (that is, a CondenseNet), use **converted model file** and `evaluate-from`:
+Finally, to directly load from a converted model (that is, a CondenseNet), use a **converted model file** in combination with the `evaluate-from` option:
 
 ```
 python main.py --model condensenet_converted -b 16 -j 20 /PATH/TO/IMAGENET \
