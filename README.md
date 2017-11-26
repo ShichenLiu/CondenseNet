@@ -12,7 +12,7 @@ This repository contains the code for "[CondenseNet: An Efficient DenseNet using
 
 ## Introduction
 
-CondenseNet is a novel network architecture with unprecedented efficiency. It combines dense connectivity between layers with a mechanism to remove unused connections. The dense connectivity facilitates feature re-use in the network, whereas learned group convolutions remove connections between layers for which this feature re-use is superfluous. At test time, our model can be implemented using standard grouped convolutions —- allowing for efficient computation in practice. Our experiments demonstrate that CondenseNets are much more efficient than other compact convolutional networks such as MobileNets and ShuffleNets.
+CondenseNet is a novel, computationally efficient convolutional network architecture. It combines dense connectivity between layers with a mechanism to remove unused connections. The dense connectivity facilitates feature re-use in the network, whereas learned group convolutions remove connections between layers for which this feature re-use is superfluous. At test time, our model can be implemented using standard grouped convolutions —- allowing for efficient computation in practice. Our experiments demonstrate that CondenseNets are much more efficient than other compact convolutional networks such as MobileNets and ShuffleNets.
 
 <img src="https://user-images.githubusercontent.com/9162722/32978657-b10fae0e-cc81-11e7-888d-1f9e4c028a9b.png">
 
@@ -24,7 +24,7 @@ Figure 2: CondenseNets with Fully Dense Connectivity and Increasing Growth Rate.
 
 ## Usage
 
-### Depandency
+### Dependencies
 
 - python3
 - [torch](http://pytorch.org)
@@ -47,9 +47,9 @@ python main.py --model condensenet -b 256 -j 12 cifar10 \
 
 
 ### Evaluation
-We take above trained ImageNet model as an example.
+We take the ImageNet model trained above as an example.
 
-To evaluate the model, use `evaluate` to evaluate from given save directory
+To evaluate the trained model, use `evaluate` to evaluate from the default checkpoint directory:
 
 ```
 python main.py --model condensenet -b 16 -j 20 /PATH/TO/IMAGENET \
@@ -57,7 +57,7 @@ python main.py --model condensenet -b 16 -j 20 /PATH/TO/IMAGENET \
 --evaluate
 ```
 
-or use `evaluate-from` to evaluate from an arbitrary path
+or use `evaluate-from` to evaluate from an arbitrary path:
 
 ```
 python main.py --model condensenet -b 20 -j 20 /PATH/TO/IMAGENET \
@@ -65,7 +65,7 @@ python main.py --model condensenet -b 20 -j 20 /PATH/TO/IMAGENET \
 --evaluate-from /PATH/TO/BEST/MODEL
 ```
 
-However, this model is still large, to convert the model to grouped-convolution version as described in the paper, use `convert-from`
+Note that these models are still the large models. To convert the model to grouped-convolution version as described in the paper, use the `convert-from` function:
 
 ```
 python main.py --model condensenet -b 20 -j 20 /PATH/TO/IMAGENET \
@@ -73,7 +73,7 @@ python main.py --model condensenet -b 20 -j 20 /PATH/TO/IMAGENET \
 --convert-from /PATH/TO/BEST/MODEL
 ```
 
-Finally, to directly load from a converted model (CondensedNets), use **converted model file** and `evaluate-from`
+Finally, to directly load from a converted model (that is, a CondenseNet), use **converted model file** and `evaluate-from`:
 
 ```
 python main.py --model condensenet_converted -b 16 -j 20 /PATH/TO/IMAGENET \
@@ -107,8 +107,6 @@ For detailed options, `python main.py --help`
 |---|---|---|---|---|---|
 | CondenseNet-74 (C=G=4) | 529M | 4.8M | 26.2 | 8.3 | [Download (19M)](https://www.dropbox.com/s/sj26rm4so3uhdmg/converted_condensenet_4.pth.tar?dl=0) |
 | CondenseNet-74 (C=G=8) | 274M | 2.9M | 29.0 | 10.0 | [Download (12M)](https://www.dropbox.com/s/aj1xpd6zcnclous/converted_condensenet_8.pth.tar?dl=0) |
-
-## Discussion
 
 ## Contact
 liushichen95@gmail.com  
