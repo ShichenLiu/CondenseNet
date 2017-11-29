@@ -65,7 +65,7 @@ python main.py --model condensenet -b 20 -j 20 /PATH/TO/IMAGENET \
 --evaluate-from /PATH/TO/BEST/MODEL
 ```
 
-Note that these models are still the large models. To convert the model to grouped-convolution version as described in the paper, use the `convert-from` function:
+Note that these models are still the large models. To convert the model to group-convolution version as described in the paper, use the `convert-from` function:
 
 ```
 python main.py --model condensenet -b 20 -j 20 /PATH/TO/IMAGENET \
