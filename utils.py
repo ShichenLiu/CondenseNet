@@ -10,6 +10,7 @@ from functools import reduce
 import operator
 from layers import LearnedGroupConv, CondensingLinear, CondensingConv, Conv
 
+
 count_ops = 0
 count_params = 0
 
@@ -54,7 +55,7 @@ def get_layer_param(model):
     return sum([reduce(operator.mul, i.size(), 1) for i in model.parameters()])
 
 
-### the input batch size should be 1 to call this function
+### The input batch size should be 1 to call this function
 def measure_layer(layer, x):
     global count_ops, count_params
     delta_ops = 0

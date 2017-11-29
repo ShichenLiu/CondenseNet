@@ -16,7 +16,7 @@ global_progress = 0.0
 
 
 def make_divisible(x, y):
-    return (x // y + 1) * y if x % y else x
+    return int((x // y + 1) * y) if x % y else int(x)
 
 
 class _DenseLayer(nn.Module):
@@ -50,8 +50,8 @@ class _DenseBlock(nn.Sequential):
 class _Transition(nn.Module):
     def __init__(self, in_channels, out_channels, args):
         super(_Transition, self).__init__()
-        self.conv = _PreConv(in_channels, out_channels,
-                             kernel_size=1, groups=args.group_1x1)
+        self.conv = Conv(in_channels, out_channels,
+                         kernel_size=1, groups=args.group_1x1)
         self.pool = nn.AvgPool2d(kernel_size=2, stride=2)
 
     def forward(self, x):

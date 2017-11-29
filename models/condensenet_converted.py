@@ -79,8 +79,8 @@ class CondenseNet(nn.Module):
             ### Dense-block i
             self.add_block(i)
         ### Linear layer
-        self.classifier = _PrunedLinear(self.num_features, args.num_classes,
-                                        0.5)
+        self.classifier = CondenseLinear(self.num_features, args.num_classes,
+                                         0.5)
         ### initialize
         for m in self.modules():
             if isinstance(m, nn.Conv2d):

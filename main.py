@@ -12,10 +12,10 @@ import warnings
 import models
 from utils import convert_model, measure_model
 
-parser = argparse.ArgumentParser(description='PyTorch Condense Convolutional Networks Training')
+parser = argparse.ArgumentParser(description='PyTorch Condensed Convolutional Networks')
 parser.add_argument('data', metavar='DIR',
                     help='path to dataset')
-parser.add_argument('--model', default='condensednet_lite', type=str, metavar='M',
+parser.add_argument('--model', default='condensenet', type=str, metavar='M',
                     help='model to train the dataset')
 parser.add_argument('-j', '--workers', default=8, type=int, metavar='N',
                     help='number of data loading workers (default: 4)')
@@ -110,7 +110,7 @@ best_prec1 = 0
 def main():
     global args, best_prec1
 
-    ### Calculate flops & #param
+    ### Calculate FLOPs & Param
     model = getattr(models, args.model)(args)
     print(model)
     if args.data in ['cifar10', 'cifar100']:
@@ -118,7 +118,7 @@ def main():
     else:
         IMAGE_SIZE = 224
     n_flops, n_params = measure_model(model, IMAGE_SIZE, IMAGE_SIZE)
-    print('FLOPs: %.2fM, #params: %.2fM' % (n_flops / 1e6, n_params / 1e6))
+    print('FLOPs: %.2fM, Params: %.2fM' % (n_flops / 1e6, n_params / 1e6))
     args.filename = "%s_%s_%s.txt" % \
         (args.model, int(n_params), int(n_flops))
     del(model)
@@ -261,7 +261,7 @@ def main():
     print(model)
     validate(val_loader, model, criterion)
     n_flops, n_params = measure_model(model, IMAGE_SIZE, IMAGE_SIZE)
-    print('FLOPs: %.2fM, #params: %.2fM' % (n_flops / 1e6, n_params / 1e6))
+    print('FLOPs: %.2fM, Params: %.2fM' % (n_flops / 1e6, n_params / 1e6))
     return
 
 
@@ -275,9 +275,9 @@ def train(train_loader, model, criterion, optimizer, epoch):
 
     ### Switch to train mode
     model.train()
-    ### Find all learned convs
+    ### Find all learned convs to prepare for group lasso loss
     for m in model.modules():
-        if m.__str__().startswith('_PreLaunchConv'):
+        if m.__str__().startswith('LearnedGroupConv'):
             learned_module_list.append(m)
     running_lr = None
 

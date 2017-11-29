@@ -26,9 +26,9 @@ Figure 2: CondenseNets with Fully Dense Connectivity and Increasing Growth Rate.
 
 ### Dependencies
 
-- python3
-- [torch](http://pytorch.org)
-- ImageNet
+- [Python3](https://www.python.org/downloads/)
+- [PyTorch(0.1.12+)](http://pytorch.org)
+- [ImageNet](https://www.image-net.org/challenges/LSVRC/2012/)
 
 ### Train
 As an example, use the following command to train a CondenseNet on ImageNet
@@ -82,10 +82,18 @@ python main.py --model condensenet_converted -b 16 -j 20 /PATH/TO/IMAGENET \
 ```
 
 ### Other Options
-For more examples of usage, refer to [script.sh](script.sh)  
-For detailed options, `python main.py --help`
+We also include DenseNet implementation in this repository.  
+For more examples of usage, please refer to [script.sh](script.sh)  
+For detailed options, please `python main.py --help`
 
 ## Results
+
+### Results on ImageNet
+
+| Model | FLOPs | Params | Top-1 Err. | Top-5 Err. | Pytorch Model |
+|---|---|---|---|---|---|
+| CondenseNet-74 (C=G=4) | 529M | 4.8M | 26.2 | 8.3 | [Download (18.69M)](https://www.dropbox.com/s/sj26rm4so3uhdmg/converted_condensenet_4.pth.tar?dl=0) |
+| CondenseNet-74 (C=G=8) | 274M | 2.9M | 29.0 | 10.0 | [Download (11.68M)](https://www.dropbox.com/s/aj1xpd6zcnclous/converted_condensenet_8.pth.tar?dl=0) |
 
 ### Results on CIFAR
 
@@ -100,13 +108,6 @@ For detailed options, `python main.py --help`
 | CondenseNet-182* | 513M | 4.2M | 3.76 | 18.47 |
 
 (* trained 600 epochs)
-
-### Results on ImageNet
-
-| Model | FLOPs | Params | Top-1 Err. | Top-5 Err. | Pytorch Model |
-|---|---|---|---|---|---|
-| CondenseNet-74 (C=G=4) | 529M | 4.8M | 26.2 | 8.3 | [Download (19M)](https://www.dropbox.com/s/sj26rm4so3uhdmg/converted_condensenet_4.pth.tar?dl=0) |
-| CondenseNet-74 (C=G=8) | 274M | 2.9M | 29.0 | 10.0 | [Download (12M)](https://www.dropbox.com/s/aj1xpd6zcnclous/converted_condensenet_8.pth.tar?dl=0) |
 
 ## Contact
 liushichen95@gmail.com  
