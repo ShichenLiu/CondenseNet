@@ -1,6 +1,6 @@
 # CondenseNets
 
-This repository contains the code (in PyTorch) for "[CondenseNet: An Efficient DenseNet using Learned Group Convolutions](http://www.cs.cornell.edu/~gaohuang/papers/condensenet.pdf)" paper by [Gao Huang](http://www.cs.cornell.edu/~gaohuang/)\*, [Shichen Liu](https://shichenliu.github.io)\*, [Laurens van der Maaten](https://lvdmaaten.github.io) and [Kilian Weinberger](https://www.cs.cornell.edu/%7Ekilian/) (* Authors contributed equally).
+This repository contains the code (in PyTorch) for "[CondenseNet: An Efficient DenseNet using Learned Group Convolutions](https://arxiv.org/abs/1711.09224)" paper by [Gao Huang](http://www.cs.cornell.edu/~gaohuang/)\*, [Shichen Liu](https://shichenliu.github.io)\*, [Laurens van der Maaten](https://lvdmaaten.github.io) and [Kilian Weinberger](https://www.cs.cornell.edu/%7Ekilian/) (* Authors contributed equally).
 
 ## Contents
 
