@@ -2,6 +2,17 @@
 
 This repository contains the code (in PyTorch) for "[CondenseNet: An Efficient DenseNet using Learned Group Convolutions](https://arxiv.org/abs/1711.09224)" paper by [Gao Huang](http://www.cs.cornell.edu/~gaohuang/)\*, [Shichen Liu](https://shichenliu.github.io)\*, [Laurens van der Maaten](https://lvdmaaten.github.io) and [Kilian Weinberger](https://www.cs.cornell.edu/%7Ekilian/) (* Authors contributed equally).
 
+### Citation
+
+```
+@article{huang2017condensenet,
+  title={CondenseNet: An Efficient DenseNet using Learned Group Convolutions},
+  author={Huang, Gao and Liu, Shichen and van der Maaten, Laurens and Weinberger, Kilian Q},
+  journal={arXiv preprint arXiv:1711.09224},
+  year={2017}
+}
+```
+
 ## Contents
 
 1. [Introduction](#introduction)
@@ -108,6 +119,16 @@ For detailed options, please `python main.py --help`
 | CondenseNet-182* | 513M | 4.2M | 3.76 | 18.47 |
 
 (* trained 600 epochs)
+
+### Inference time on ARM platform
+
+| Model | FLOPs | Top-1 | Time(s) |
+|---|---|---|---|
+| VGG-16 | 15,300M | 28.5 | 354 |
+| ResNet-18 | 1,818M | 30.2 | 8.14 |
+| 1.0 MobileNet-224 | 569M | 29.4 | 1.96 |
+| CondenseNet-74 (C=G=4) | 529M | 26.2 | 1.89 |
+| CondenseNet-74 (C=G=8) | 274M | 29.0 | 0.99 |
 
 ## Contact
 liushichen95@gmail.com  
