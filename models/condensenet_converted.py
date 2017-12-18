@@ -16,13 +16,12 @@ class _DenseLayer(nn.Module):
         super(_DenseLayer, self).__init__()
         self.group_1x1 = args.group_1x1
         self.group_3x3 = args.group_3x3
-        ### 1x1 conv i-->k
+        ### 1x1 conv i --> b*k
         self.conv_1 = CondenseConv(in_channels, args.bottleneck * growth_rate,
                                    kernel_size=1, groups=self.group_1x1)
-        ### 3x3 conv k-->k
+        ### 3x3 conv b*k-->k
         self.conv_2 = Conv(args.bottleneck * growth_rate, growth_rate,
                            kernel_size=3, padding=1, groups=self.group_3x3)
-        return
 
     def forward(self, x):
         x_ = x
@@ -91,7 +90,6 @@ class CondenseNet(nn.Module):
                 m.bias.data.zero_()
             elif isinstance(m, nn.Linear):
                 m.bias.data.zero_()
-        return
 
     def add_block(self, i):
         ### Check if ith is the last one
@@ -115,7 +113,6 @@ class CondenseNet(nn.Module):
                                      nn.ReLU(inplace=True))
             self.features.add_module('pool_last',
                                      nn.AvgPool2d(self.pool_size))
-        return
 
     def forward(self, x, progress=None):
         features = self.features(x)

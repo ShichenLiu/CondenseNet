@@ -4,6 +4,8 @@ This repository contains the code (in PyTorch) for "[CondenseNet: An Efficient D
 
 ### Citation
 
+If you find our project useful in your research, please consider citing:
+
 ```
 @article{huang2017condensenet,
   title={CondenseNet: An Efficient DenseNet using Learned Group Convolutions},

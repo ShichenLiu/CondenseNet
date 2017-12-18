@@ -45,8 +45,8 @@ parser.add_argument('--manual-seed', default=0, type=int, metavar='N',
 parser.add_argument('--gpu',
                     help='gpu available')
 
-parser.add_argument('--savedir', type=str, metavar='PATH', default='result/savedir',
-                    help='path to save result and checkpoint (default: result/savedir)')
+parser.add_argument('--savedir', type=str, metavar='PATH', default='results/savedir',
+                    help='path to save result and checkpoint (default: results/savedir)')
 parser.add_argument('--resume', action='store_true',
                     help='use latest checkpoint if have any (default: none)')
 

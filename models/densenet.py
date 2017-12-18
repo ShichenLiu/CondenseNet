@@ -12,8 +12,6 @@ from layers import Conv
 
 __all__ = ['DenseNet']
 
-global_progress = 0.0
-
 
 def make_divisible(x, y):
     return int((x // y + 1) * y) if x % y else int(x)
@@ -24,13 +22,12 @@ class _DenseLayer(nn.Module):
         super(_DenseLayer, self).__init__()
         self.group_1x1 = args.group_1x1
         self.group_3x3 = args.group_3x3
-        ### 1x1 conv i --> bn*k
+        ### 1x1 conv i --> b*k
         self.conv_1 = Conv(in_channels, args.bottleneck * growth_rate,
                            kernel_size=1, groups=self.group_1x1)
-        ### 3x3 conv bn*k --> k
+        ### 3x3 conv b*k --> k
         self.conv_2 = Conv(args.bottleneck * growth_rate, growth_rate,
                            kernel_size=3, padding=1, groups=self.group_3x3)
-        return
 
     def forward(self, x):
         x_ = x
@@ -103,7 +100,6 @@ class DenseNet(nn.Module):
                 m.bias.data.zero_()
             elif isinstance(m, nn.Linear):
                 m.bias.data.zero_()
-        return
 
     def add_block(self, i):
         ### Check if ith is the last one
@@ -132,7 +128,6 @@ class DenseNet(nn.Module):
             ### Use adaptive ave pool as global pool
             self.features.add_module('pool_last',
                                      nn.AvgPool2d(self.pool_size))
-        return
 
     def forward(self, x, progress=None):
         global global_progress
