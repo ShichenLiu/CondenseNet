@@ -11,7 +11,7 @@ import math
 from layers import Conv, LearnedGroupConv
 
 
-__all__ = ['DenseNet']
+__all__ = ['DenseNet_LGC']
 
 
 def make_divisible(x, y):
@@ -61,10 +61,10 @@ class _Transition(nn.Module):
         return x
 
 
-class DenseNet(nn.Module):
+class DenseNet_LGC(nn.Module):
     def __init__(self, args):
 
-        super(DenseNet, self).__init__()
+        super(DenseNet_LGC, self).__init__()
 
         self.stages = args.stages
         self.growth = args.growth
@@ -134,9 +134,8 @@ class DenseNet(nn.Module):
                                      nn.AvgPool2d(self.pool_size))
 
     def forward(self, x, progress=None):
-        global global_progress
         if progress:
-            global_progress = progress
+            LearnedGroupConv.global_progress = progress
         features = self.features(x)
         out = features.view(features.size(0), -1)
         out = self.classifier(out)

@@ -130,9 +130,6 @@ class DenseNet(nn.Module):
                                      nn.AvgPool2d(self.pool_size))
 
     def forward(self, x, progress=None):
-        global global_progress
-        if progress:
-            global_progress = progress
         features = self.features(x)
         out = features.view(features.size(0), -1)
         out = self.classifier(out)
