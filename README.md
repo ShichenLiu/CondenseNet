@@ -54,7 +54,7 @@ python main.py --model condensenet -b 256 -j 20 /PATH/TO/IMAGENET \
 As another example, use the following command to train a CondenseNet on CIFAR-10
 
 ```
-python main.py --model condensenet -b 256 -j 12 cifar10 \
+python main.py --model condensenet -b 64 -j 12 cifar10 \
 --stages 14-14-14 --growth 8-16-32 --gpu 0 --resume
 ```
 
@@ -65,7 +65,7 @@ We take the ImageNet model trained above as an example.
 To evaluate the trained model, use `evaluate` to evaluate from the default checkpoint directory:
 
 ```
-python main.py --model condensenet -b 16 -j 20 /PATH/TO/IMAGENET \
+python main.py --model condensenet -b 64 -j 20 /PATH/TO/IMAGENET \
 --stages 4-6-8-10-8 --growth 8-16-32-64-128 --gpu 0 --resume \
 --evaluate
 ```
@@ -73,7 +73,7 @@ python main.py --model condensenet -b 16 -j 20 /PATH/TO/IMAGENET \
 or use `evaluate-from` to evaluate from an arbitrary path:
 
 ```
-python main.py --model condensenet -b 20 -j 20 /PATH/TO/IMAGENET \
+python main.py --model condensenet -b 64 -j 20 /PATH/TO/IMAGENET \
 --stages 4-6-8-10-8 --growth 8-16-32-64-128 --gpu 0 --resume \
 --evaluate-from /PATH/TO/BEST/MODEL
 ```
@@ -81,7 +81,7 @@ python main.py --model condensenet -b 20 -j 20 /PATH/TO/IMAGENET \
 Note that these models are still the large models. To convert the model to group-convolution version as described in the paper, use the `convert-from` function:
 
 ```
-python main.py --model condensenet -b 20 -j 20 /PATH/TO/IMAGENET \
+python main.py --model condensenet -b 64 -j 20 /PATH/TO/IMAGENET \
 --stages 4-6-8-10-8 --growth 8-16-32-64-128 --gpu 0 --resume \
 --convert-from /PATH/TO/BEST/MODEL
 ```
@@ -89,7 +89,7 @@ python main.py --model condensenet -b 20 -j 20 /PATH/TO/IMAGENET \
 Finally, to directly load from a converted model (that is, a CondenseNet), use a **converted model file** in combination with the `evaluate-from` option:
 
 ```
-python main.py --model condensenet_converted -b 16 -j 20 /PATH/TO/IMAGENET \
+python main.py --model condensenet_converted -b 64 -j 20 /PATH/TO/IMAGENET \
 --stages 4-6-8-10-8 --growth 8-16-32-64-128 --gpu 0 --resume \
 --evaluate-from /PATH/TO/CONVERTED/MODEL
 ```
