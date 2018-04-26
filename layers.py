@@ -59,7 +59,7 @@ class LearnedGroupConv(nn.Module):
         else:
             stage = self.condense_factor - 1
         ### Check for dropping
-        if not self._at_stage(stage):
+        if not self._reach_stage(stage):
             self.stage = stage
             delta = self.in_channels // self.condense_factor
         if delta > 0:
@@ -108,8 +108,8 @@ class LearnedGroupConv(nn.Module):
     def mask(self):
         return Variable(self._mask)
 
-    def _at_stage(self, stage):
-        return (self._stage == stage).all()
+    def _reach_stage(self, stage):
+        return (self._stage >= stage).all()
 
     @property
     def lasso_loss(self):
