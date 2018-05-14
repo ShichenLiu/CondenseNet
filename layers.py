@@ -113,7 +113,7 @@ class LearnedGroupConv(nn.Module):
 
     @property
     def lasso_loss(self):
-        if self._at_stage(self.groups - 1):
+        if self._reach_stage(self.groups - 1):
             return 0
         weight = self.conv.weight * self.mask
         ### Assume only apply to 1x1 conv to speed up
