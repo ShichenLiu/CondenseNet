@@ -7,11 +7,12 @@ This repository contains the code (in PyTorch) for "[CondenseNet: An Efficient D
 If you find our project useful in your research, please consider citing:
 
 ```
-@article{huang2017condensenet,
-  title={CondenseNet: An Efficient DenseNet using Learned Group Convolutions},
-  author={Huang, Gao and Liu, Shichen and van der Maaten, Laurens and Weinberger, Kilian Q},
-  journal={arXiv preprint arXiv:1711.09224},
-  year={2017}
+@inproceedings{huang2018condensenet,
+  title={Condensenet: An efficient densenet using learned group convolutions},
+  author={Huang, Gao and Liu, Shichen and Van der Maaten, Laurens and Weinberger, Kilian Q},
+  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  pages={2752--2761},
+  year={2018}
 }
 ```
 
