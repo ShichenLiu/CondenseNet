@@ -41,7 +41,7 @@ Figure 2: CondenseNets with Fully Dense Connectivity and Increasing Growth Rate.
 ### Dependencies
 
 - [Python3](https://www.python.org/downloads/)
-- [PyTorch(0.1.12+)](http://pytorch.org)
+- [PyTorch(1.1.0)](http://pytorch.org)
 - [ImageNet](https://www.image-net.org/challenges/LSVRC/2012/)
 
 ### Train
